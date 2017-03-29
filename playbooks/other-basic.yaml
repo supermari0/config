@@ -1,0 +1,24 @@
+- hosts: all
+  tasks:
+    # Do some other basic setup tasks
+    - name: Install deps for apt module
+      # TODO way of making this generic for other distros?
+      shell: apt-get update && apt-get install -y python-apt aptitude
+      become: true
+
+    - name: Install some basic stuff
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items:
+          - git
+          - vim
+      become: true
+
+    - name: Copy over vimrc
+      # TODO Make this work outside of this directory when you reorganize this.
+      # TODO Automation to make your vim plugin work.
+      # TODO Use variables here.
+      copy:
+        src: ../vimrc
+        dest: /home/mariojv/.vimrc
