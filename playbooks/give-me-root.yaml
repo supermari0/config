@@ -16,6 +16,7 @@
 
     - name: Add me in the wheel group with bash
       user:
+        # TODO Make this a variable.
         name: mariojv
         groups: wheel
         append: yes
@@ -28,7 +29,8 @@
       with_file:
        - ~/.ssh/id_rsa.pub
 
-    - name: Kill direct root SSH access
+    - name: Kill any keys authorized to SSH as root
       file:
         path: /root/.ssh/authorized_keys
         state: absent
+    # TODO Ensure state of SSH config (no password auth, no root login)

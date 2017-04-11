@@ -11,6 +11,7 @@
         name: "{{ item }}"
         state: present
       with_items:
+      # TODO Git configuration.
           - git
           - vim
       become: true
