@@ -1,30 +1,34 @@
 " The Villaplana Vimrc
 
-" TODO Fix all the whitespace here
 set nocompatible              " be iMproved, required
 filetype off                  " required
+let g:syntastic_go_checkers = ['gofmt']
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
+"" alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
+"
+"" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
+"
+"" The following are examples of different formats supported.
+"" Keep Plugin commands between vundle#begin/end.
+"" plugin on GitHub repo
+"" Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
+"
 
-" All of your Plugins must be added before the following line
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'editorconfig/editorconfig-vim'
+
+"" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
+filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -35,9 +39,10 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 " syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
 
 " Enable line numbers on side.
 set nu
@@ -58,18 +63,15 @@ set expandtab
 
 " Show tab characters and some other things.
 set list
-set listchars=tab:\|\
+set listchars=tab:\|\ 
 
 set equalalways
-
-" Enable loading of the indent file for specific filetypes.
-filetype indent on
 
 " Always show statusline.
 set laststatus=2
 
 " Add relative path to statusline.
-set statusline+=%f
+set statusline+=%F
 
 " Statusline hax (slightly modded) courtesy of got-ravings.blogspot.com
 set statusline=%t       "tail of the filename
@@ -95,10 +97,7 @@ match ErrorMsg '\s\+$'
 
 " Disable Ex mode
 nnoremap Q <nop>
-
-" Use normal backspacing
 set backspace=2
-
 " Function for trimming trailing whitespace
 fun! TrimWhitespace()
     let l:save = winsaveview()
