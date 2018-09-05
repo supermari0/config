@@ -4,6 +4,16 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 let g:syntastic_go_checkers = ['gofmt']
 
+function Py2()
+  let g:syntastic_python_python_exec = '/usr/local/bin/python2.7'
+endfunction
+
+function Py3()
+  let g:syntastic_python_python_exec = '/usr/local/bin/python3.7'
+endfunction
+
+call Py3()
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -19,8 +29,6 @@ Plugin 'VundleVim/Vundle.vim'
 "" Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
-"
-
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'editorconfig/editorconfig-vim'
 
@@ -42,7 +50,6 @@ filetype plugin on
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
-
 
 " Enable line numbers on side.
 set nu
@@ -106,5 +113,3 @@ fun! TrimWhitespace()
 endfun
 
 command! TrimWhitespace call TrimWhitespace()
-
-let g:syntastic_python_python_exec = '/usr/local/bin/python3'
