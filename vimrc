@@ -110,7 +110,6 @@ endfun
 command! TrimWhitespace call TrimWhitespace()
 
 " Color settings, trying out Solarized
-" set background=dark
 " Above is good for dark rooms
 let g:solarized_termcolors=256
 colorscheme solarized
@@ -118,7 +117,7 @@ colorscheme solarized
 " emulator.
 set term=screen-256color
 set t_ut=
-
+set background=light
 " Highlight the 80th line
 set cc=80
 
