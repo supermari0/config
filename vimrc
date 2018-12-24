@@ -29,8 +29,8 @@ Plugin 'VundleVim/Vundle.vim'
 "" Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'altercation/vim-colors-solarized'
 
 "" All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -96,11 +96,6 @@ set statusline+=%l/%L   "cursor line/total lines
 " I don't know what this does
 set clipboard=unnamed
 
-" Color the 80th line
-set cc=80
-
-" Highlight trailing whitespace
-match ErrorMsg '\s\+$'
 
 " Disable Ex mode
 nnoremap Q <nop>
@@ -113,3 +108,18 @@ fun! TrimWhitespace()
 endfun
 
 command! TrimWhitespace call TrimWhitespace()
+
+" Color settings, trying out Solarized
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
+" NOTE: Below two settings may only be needed on WSL, depends on the terminal
+" emulator.
+set term=screen-256color
+set t_ut=
+
+" Highlight the 80th line
+set cc=80
+
+" Highlight trailing whitespace
+match ErrorMsg '\s\+$'
