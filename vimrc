@@ -110,7 +110,8 @@ endfun
 command! TrimWhitespace call TrimWhitespace()
 
 " Color settings, trying out Solarized
-set background=dark
+" set background=dark
+" Above is good for dark rooms
 let g:solarized_termcolors=256
 colorscheme solarized
 " NOTE: Below two settings may only be needed on WSL, depends on the terminal
