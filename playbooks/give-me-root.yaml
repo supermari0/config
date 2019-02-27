@@ -24,16 +24,6 @@
         createhome: yes
         shell: /bin/bash
 
-    - name: Add me in the wheel group with bash
-      user:
-        # TODO Make this a variable.
-        name: jed
-        groups: wheel
-        append: yes
-        state: present
-        createhome: yes
-        shell: /bin/bash
-
     - name: Set up my SSH key
       authorized_key: user=mariojv key="{{item}}"
       with_file:
