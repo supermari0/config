@@ -1,4 +1,8 @@
 - hosts: all
+  gather_facts: no
+  pre_tasks:
+    - name: Install Python 2 for Ansible (required current ansible)
+      raw: sudo apt-get update && apt-get install -y python
   tasks:
     # Give me a user with root
     - name: Make sure we have a 'wheel' group
