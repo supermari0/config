@@ -9,7 +9,7 @@ function Py2()
 endfunction
 
 function Py3()
-  let g:syntastic_python_python_exec = '/usr/local/bin/python3.7'
+  let g:syntastic_python_python_exec = 'python3'
 endfunction
 
 call Py3()
@@ -31,6 +31,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'autozimu/LanguageClient-neovim'
 
 "" All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -96,7 +97,6 @@ set statusline+=%l/%L   "cursor line/total lines
 " I don't know what this does
 set clipboard=unnamed
 
-
 " Disable Ex mode
 nnoremap Q <nop>
 set backspace=2
@@ -113,13 +113,25 @@ command! TrimWhitespace call TrimWhitespace()
 " Above is good for dark rooms
 let g:solarized_termcolors=256
 colorscheme solarized
+" :set background=dark for dark color scheme
+
 " NOTE: Below two settings may only be needed on WSL, depends on the terminal
 " emulator.
 set term=screen-256color
 set t_ut=
 set background=light
+
 " Highlight the 80th line
 set cc=80
 
 " Highlight trailing whitespace
 match ErrorMsg '\s\+$'
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+map <Leader>lk :call LanguageClient#textDocument_hover()<CR>
+map <Leader>lg :call LanguageClient#textDocument_definition()<CR>
+map <Leader>lr :call LanguageClient#textDocument_rename()<CR>
+map <Leader>lf :call LanguageClient#textDocument_formatting()<CR>
+map <Leader>lb :call LanguageClient#textDocument_references()<CR>
+map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
+map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
